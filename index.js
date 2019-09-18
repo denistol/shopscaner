@@ -10,7 +10,7 @@ const path = require('path');
 const cheerio = require('cheerio');
 const api = new telegram({ token: process.env.TELEGRAM_TOKEN });
 const filePath = path.join(__dirname, 'data.json');
-const chatIds = ['266476630'];
+const chatIds = ['371041145','266476630'];
 const url = `https://tehnoskarb.ua/igrovye-pristavki/c72?page=1?s=novelties`;
 
 const sendMessage = (text) => {
