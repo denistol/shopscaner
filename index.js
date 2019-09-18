@@ -58,12 +58,14 @@ const main = async () => {
         });
 
         fs.writeFileSync(filePath, JSON.stringify(newResults, null, 2));
+        console.log('done');
     }
     catch {
         console.log("[!] Bot error");
         await browser.close();
     };
     await browser.close();
+    process.exit(0);
 };
 
 main();
