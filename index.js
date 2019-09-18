@@ -20,7 +20,7 @@ const sendMessage = (text) => {
 };
 
 const main = async () => {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({headless: true, args:['--no-sandbox']});
     try {
         const page = await browser.newPage();
         await page.goto(url);
