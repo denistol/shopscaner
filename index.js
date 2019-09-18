@@ -65,7 +65,6 @@ const main = async () => {
         await browser.close();
     };
     await browser.close();
-    process.exit(0);
 };
 
 main();
