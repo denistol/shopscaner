@@ -8,4 +8,4 @@ npm install --prefix shopscaner;
 while true;
 do TELEGRAM_TOKEN=<TOKEN> npm run --prefix ~/shopscaner start;
 sleep 30;
-done;```
+done;
