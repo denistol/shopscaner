@@ -9,3 +9,14 @@ while true;
 do TELEGRAM_TOKEN=<TOKEN> npm run --prefix ~/shopscaner start;
 sleep 30;
 done;
+
+
+let lastPage = Number(document.querySelector('li.next').previousSibling.textContent)
+let parseDoc = () =>{
+    [...document.querySelectorAll('.product-name')].map(el=>{
+        let url = el.children[0].getAttribute('href')
+        let name = el.textContent
+        let price = el.nextSibling.textContent
+        return {url,name,price}
+    })
+}
