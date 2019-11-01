@@ -13,7 +13,7 @@ const filePath = path.join(__dirname, 'data.json');
 const filePath2 = path.join(__dirname, 'data2.json');
 const chatIds = ['371041145','266476630'];
 const url = `https://tehnoskarb.ua/igrovye-pristavki/c72?page=1?s=novelties`;
-const url2 = (page) => `https://technostock.com.ua/catalog/noutbuki-kompjutery-planshety/igrovye-konsoli?p=${page}`
+const url2 = `https://technostock.com.ua/catalog/noutbuki-kompjutery-planshety/igrovye-konsoli?p=1`
 const sendMessage = (text) => {
     chatIds.forEach(chat_id => {
         api.sendMessage({ chat_id, text })
@@ -22,7 +22,7 @@ const sendMessage = (text) => {
 
 const main = async () => {
     const browser = await puppeteer.launch({headless: true, args:['--no-sandbox']});
-    try {
+    // try {
         const page = await browser.newPage();
         await page.goto(url);
         let content = await page.content().then(c => c);
@@ -60,19 +60,17 @@ const main = async () => {
 
         fs.writeFileSync(filePath, JSON.stringify(newResults, null, 2));
         console.log('done');
-    }
-    catch {
-        console.log("[!] Bot error");
-        await browser.close();
-	};
+    
+
 	// check tehnostock
-	const page = await browser.newPage();
-	await page.goto(url2(1));
-	let content = await page.content().then(c => c);
-	let $ = cheerio.load(content, { decodeEntities: false });
+	const page2 = await browser.newPage();
+	await page2.goto(url2);
+	let content2 = await page2.content().then(c => c);
+	let $2 = cheerio.load(content2);
+	// console.log(content2)
 	let newResults2 = {}
-	$('.item-inner').each( (i,el) => {
-		const item = $(el)
+	$2('.item-inner').each( (i,el) => {
+		const item = $2(el)
 		const url = item.find('a').attr('href')	
 		newResults2[i] = url
 	})
@@ -91,6 +89,12 @@ const main = async () => {
 		console.log('done2')
 		
 	}
+	// }
+
+	// catch {
+    //     console.log("[!] Bot error");
+    //     await browser.close();
+	// };
     await browser.close();
 };
 
