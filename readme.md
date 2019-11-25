@@ -5,6 +5,6 @@ sudo apt-get install -y nodejs;
 cd ~ ;
 git clone https://github.com/denistol/shopscaner.git;
 npm install --prefix shopscaner;
-npm i -g pm2
+npm i -g pm2;
 TELEGRAM_TOKEN=<TOKEN> pm2 start ~/shopscaner/index.js;
 ```
