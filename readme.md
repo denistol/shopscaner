@@ -6,5 +6,6 @@ cd ~ ;
 git clone https://github.com/denistol/shopscaner.git;
 npm install --prefix shopscaner;
 npm i -g pm2;
+pm2 link a4q52utudw8382g gekhwp8ifopgiai SHOPSCANER;
 TELEGRAM_TOKEN=<TOKEN> pm2 start ~/shopscaner/index.js;
 ```
